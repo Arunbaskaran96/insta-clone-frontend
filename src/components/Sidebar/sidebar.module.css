@@ -1,0 +1,12 @@
+.container {
+    flex: 1.4;
+    padding-top: 30px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+.logo {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+}

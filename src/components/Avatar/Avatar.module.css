@@ -1,0 +1,28 @@
+.def{
+    height:65px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: fill;
+    margin: 10px 8px;
+    cursor: pointer;
+}
+
+.conatiner {
+    display: flex;
+}
+
+.sm {
+    height:45px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: fill;
+    cursor: pointer;
+}
+
+.xs {
+    height:35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: fill;
+    cursor: pointer; 
+}

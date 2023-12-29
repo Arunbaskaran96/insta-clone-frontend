@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    margin: 30px 30px 0px 30px;
+}
+
+.storyContainer{
+    display: flex;
+    align-items: center;
+}
+
+.profileName{
+    max-width: 100px;
+    font-size: 12px;
+}

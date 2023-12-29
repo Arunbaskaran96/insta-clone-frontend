@@ -1,0 +1,33 @@
+.container{
+    padding-left: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 500px;
+}
+.top {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    position: fixed;
+    width: 45%;
+    z-index: 100;
+}
+
+.text{
+    font-size: 24px;
+    margin-left: 30px;
+    font-weight: 600;
+}
+.middle {
+    margin-top: 80px;
+    max-height: 450px;
+    overflow-x: scroll;
+}
+
+.profileName{
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 25px;
+}

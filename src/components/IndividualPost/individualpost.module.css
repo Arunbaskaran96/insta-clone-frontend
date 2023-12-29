@@ -1,0 +1,56 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+}
+
+.imgPost{
+    height: 500px;
+    width: 50%;
+}
+
+.footer{
+    display: flex;
+    padding: 10px 10px;
+}
+.footerIcon{
+    height: 25px;
+    aspect-ratio: 1/1;
+    margin: 0px 10px 0px 10px;
+    cursor: pointer;
+}
+.profileName{
+    font-size: 17px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.post{
+    height: 380px;
+    width: 100%;
+    object-fit: fill;
+}
+.container{
+    margin: 0px 100px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px black;
+    padding: 10px 0px;
+    max-height: 550px;
+    overflow: hidden;
+}
+.middle {
+    margin-top: 20px;
+}
+.modal{
+    display: flex;
+}
+.descriptionText{
+    margin: 0px 10px;
+    max-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.description{
+    margin-bottom: 15px;
+}
