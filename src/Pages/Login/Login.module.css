@@ -1,0 +1,70 @@
+.instaLogo{
+    height: 100px;
+    width: 180px;
+}
+
+.container {
+    display: flex;
+    padding: 0px 50px;
+    margin-top: 100px;
+}
+
+.leftSide {
+    flex: 6;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+
+.rightSide{
+    flex:6;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.imgleft{
+    height: 400px;
+    width: 400px;
+    object-fit:fill;
+    border-radius: 30px;
+}
+
+.regBtn{
+    height: 35px;
+    width: 239px;
+    background-color: #32ba32;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    text-decoration: none;
+    padding: 5px 90px;
+    &:hover {
+        background-color:#07f507;
+    }  
+}
+
+.btn{
+    height: 35px;
+    width: 239px;
+    background-color: rgb(19, 196, 196);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 1px;
+    transition: 0.4s;
+    margin-bottom: 20px;
+    &:hover {
+        background-color: teal;
+    }
+}
+
+.input{
+    height: 32px;
+    width: 240px;
+    margin-bottom: 10px;
+}

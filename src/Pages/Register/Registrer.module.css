@@ -1,0 +1,54 @@
+.instaLogo{
+    height: 130px;
+    width: 200px;
+}
+
+.input{
+    height: 35px;
+    width: 280px;
+    margin-bottom: 10px;
+}
+.conatiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.file{
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.logBtn{
+    text-decoration: none;
+    color: rgb(13, 86, 146);
+    margin-left: 5px;
+    transition: 0.4s;
+    &:hover {
+        color: rgb(19, 180, 180);
+    }
+
+}
+.bottom{
+    border: 1px solid gray;
+    padding: 10px 65px;
+    margin-top: 10px;
+}
+.regBtn{
+    width: 273px;
+    height: 32px;
+    background-color: aqua;
+    border: none;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    transition: 0.4s;
+    border-radius: 10px;
+    &:hover{
+        background-color: rgb(13, 175, 175);
+    }
+}
+.formContainer{
+    text-align: center;
+    border: 1px solid gray;
+    padding: 20px 20px 30px 10px;
+}
