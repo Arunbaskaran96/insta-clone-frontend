@@ -1,38 +1,30 @@
 import classes from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useFormik } from "formik";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../Redux/Reducers/UserSlice";
 
 function Login() {
+  const email = useRef<null | HTMLInputElement>(null);
+  const password = useRef<null | HTMLInputElement>(null);
   const navigate = useNavigate();
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: () => {
-      // let errors = {};
-      // if (!value.email) {
-      //   errors.email = "Please Enter Your Email";
-      // }
-      // if (!value.password) {
-      //   errors.password = "Please Enter Your Password";
-      // }
-      // return errors;
-    },
-    onSubmit: async (value) => {
-      try {
-        const { data } = await axios.post(
-          "http://localhost:8000/api/login",
-          value
-        );
-        window.localStorage.setItem("token", data.token);
-        navigate("/home");
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const userData = {
+      email: email.current?.value,
+      password: password.current?.value,
+    };
+    const { data } = await axios.post(
+      "http://localhost:8000/api/login",
+      userData
+    );
+    window.localStorage.setItem("token", data.token);
+    dispatch(addUser(data));
+    navigate("/home");
+  };
 
   return (
     <div className={classes.container}>
@@ -63,22 +55,19 @@ function Login() {
             />
             <br />
           </>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <input
-              value={formik.values.email}
+              ref={email}
               className={classes.input}
               placeholder="Enter your username"
               type="email"
-              onChange={formik.handleChange}
-              name="email"
             />
             <br />
             <input
-              value={formik.values.password}
+              ref={password}
               className={classes.input}
               placeholder="Enter your password"
               type="password"
-              onChange={formik.handleChange}
               name="password"
             />
             <br />

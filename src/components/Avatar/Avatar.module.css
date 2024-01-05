@@ -2,9 +2,20 @@
     height:65px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    margin: 10px 8px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.lg {
+    height:160px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
     object-fit: fill;
     margin: 10px 8px;
     cursor: pointer;
+    object-fit: fill;
+    position: relative;
 }
 
 .conatiner {

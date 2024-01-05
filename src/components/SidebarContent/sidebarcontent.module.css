@@ -5,6 +5,38 @@
 }
 
 
+.imageContainer{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.postContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.postBtn{
+    background-color: green;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.description{
+    width: 80%;
+    height: 50px;
+}
+
+.postImg{
+   height: 300px;
+   width: 100%; 
+}
+
 .item{
     display: flex;
     align-items: center;
@@ -12,6 +44,8 @@
     margin: 10px 10px;
     padding: 10px 10px;
     transition: 0.5s;
+    text-decoration: none;
+    color: black;
     &:hover {
         background-color: rgb(202, 200, 200);
         border-radius: 10px;
@@ -26,4 +60,8 @@
 .contentText{
     font-size: 20px;
     padding: 0px 20px ;
+}
+
+.contentTextNone {
+    display: none;
 }

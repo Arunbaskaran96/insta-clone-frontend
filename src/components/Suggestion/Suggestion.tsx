@@ -1,14 +1,50 @@
+import { useDispatch, useSelector } from "react-redux";
 import XAvatar from "../Avatar/Avatar";
 import classes from "./suggestion.module.css";
+import { addUser } from "../../Redux/Reducers/UserSlice";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function Suggestion() {
+  const [suggestionList, setSuggestionList] = useState([]);
+
+  const navigate = useNavigate();
+  const userDispatch = useDispatch();
+  const user = useSelector((state: any) => {
+    return state.User.user;
+  });
+
+  console.log(user);
+  const logoutHandler = () => {
+    window.localStorage.removeItem("token");
+    userDispatch(addUser({}));
+    navigate("/");
+  };
+
+  useEffect(() => {
+    getFriends();
+  }, []);
+
+  const getFriends = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:8000/api/getallusers",
+        {
+          headers: {
+            Authorization: `${window.localStorage.getItem("token")}`,
+          },
+        }
+      );
+      setSuggestionList(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className={classes.container}>
       <div className={classes.profileContainer}>
-        <div style={{ display: "flex" }}>
-          <XAvatar
-            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            radius="sm"
-          />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <XAvatar src={user.image} radius="sm" />
           <div
             style={{
               display: "flex",
@@ -17,49 +53,29 @@ function Suggestion() {
               justifyContent: "flex-start",
             }}
           >
-            <span className={classes.profile_Name}>Arun_Dhilla</span>
-            <span className={classes.instaName}>arun</span>
+            <span className={classes.profile_Name}>{user.name}</span>
+            <span className={classes.instaName}>{user.username}</span>
           </div>
         </div>
-        <div>
-          <span className={classes.follow}>Switch</span>
-        </div>
+        <>
+          <span onClick={logoutHandler} className={classes.logout}>
+            Log out
+          </span>
+        </>
       </div>
       <div>
         <p className={classes.text}>Suggestion for you</p>
-        <div className={classes.lists}>
-          <div className={classes.list}>
-            <XAvatar
-              src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              radius="sm"
-            />
-            <span className={classes.profileName}>vijayakanth</span>
-          </div>
-          <span className={classes.follow}>Follow</span>
-          <div></div>
-        </div>
-        <div className={classes.lists}>
-          <div className={classes.list}>
-            <XAvatar
-              src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              radius="sm"
-            />
-            <span className={classes.profileName}>vijayakanth</span>
-          </div>
-          <span className={classes.follow}>Follow</span>
-          <div></div>
-        </div>
-        <div className={classes.lists}>
-          <div className={classes.list}>
-            <XAvatar
-              src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              radius="sm"
-            />
-            <span className={classes.profileName}>vijayakanth</span>
-          </div>
-          <span className={classes.follow}>Follow</span>
-          <div></div>
-        </div>
+        {suggestionList.map((item: any) => {
+          return (
+            <div className={classes.lists}>
+              <div className={classes.list}>
+                <XAvatar src={item.image} radius="sm" />
+                <span className={classes.profileName}>{item.name}</span>
+              </div>
+              <span className={classes.follow}>Follow</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

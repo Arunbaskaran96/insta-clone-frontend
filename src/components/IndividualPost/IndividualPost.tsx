@@ -3,22 +3,54 @@ import XAvatar from "../Avatar/Avatar";
 import classes from "./individualpost.module.css";
 import XModal from "../Modal/Modal";
 import Comment from "../CommentSection/Comment";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 interface IndividualPostProps {
-  profilepic: string;
-  profileName: string;
   postImg: string;
+  title?: string;
+  like?: any;
+  user?: any;
+  comment?: Array<any>;
+  id: string;
+  item: any;
 }
 function IndividualPost(props: IndividualPostProps) {
-  const { profilepic, profileName, postImg } = props;
+  const userDetails = useSelector((state: any) => {
+    return state.User.user;
+  });
+  const { postImg, title, user, like, comment, id, item } = props;
   const [opened, { open, close }] = useDisclosure(false);
+  const [likeCount, setLikeCount] = useState<any>(like.length);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const likeHandler = async () => {
+    try {
+      setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
+      setIsLiked(!isLiked);
+      await axios.put(
+        `http://localhost:8000/api/${id}/like`,
+        { id: userDetails._id },
+        {
+          headers: { Authorization: `${window.localStorage.getItem("token")}` },
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    setIsLiked(like.includes(userDetails._id));
+  }, []);
 
   return (
     <div className={classes.container}>
       <div className={classes.header}>
-        <XAvatar src={profilepic} radius="sm" />
+        <XAvatar src={user.image} radius="sm" />
         <span className={classes.profileName}>
-          {profileName}{" "}
+          {user.name}{" "}
           <span style={{ color: "gray", fontSize: "12px" }}> 32m Ago</span>
         </span>
       </div>
@@ -28,20 +60,31 @@ function IndividualPost(props: IndividualPostProps) {
       <div className={classes.footer}>
         <XModal opened={opened} close={close}>
           <div className={classes.modal}>
-            <img
-              className={classes.imgPost}
-              src="https://imgd.aeplcdn.com/1280x720/n/cw/ec/132147/lamborghini-urus-left-front-three-quarter0.jpeg?isig=0"
-              alt="post"
+            <img className={classes.imgPost} src={postImg} alt="post" />
+            <Comment
+              user={user}
+              like={likeCount}
+              comment={comment}
+              id={id}
+              item={item}
             />
-            <Comment />
           </div>
         </XModal>
-        <img
-          className={classes.footerIcon}
-          onClick={open}
-          src="/assets/like-icon.png"
-          alt="like-icon"
-        />
+        {isLiked ? (
+          <img
+            className={classes.footerIcon}
+            onClick={likeHandler}
+            src="/assets/likered.png"
+            alt="like-icon"
+          />
+        ) : (
+          <img
+            className={classes.footerIcon}
+            onClick={likeHandler}
+            src="/assets/like-icon.png"
+            alt="like-icon"
+          />
+        )}
         <img
           className={classes.footerIcon}
           onClick={open}
@@ -49,16 +92,12 @@ function IndividualPost(props: IndividualPostProps) {
           alt="comment-icon"
         />
       </div>
+      <>
+        <span style={{ marginLeft: "10px" }}>{likeCount} likes</span>
+      </>
       <div style={{ display: "flex" }} className={classes.description}>
-        <div className={classes.profileName}>Ajith</div>
-        <span className={classes.descriptionText}>
-          Hey mummy kitchen la enna plants ah vetti knnutu irukiya,Hey mummy
-          kitchen la enna plants ah vetti knnutu irukiya,Hey mummy kitchen la
-          enna plants ah vetti knnutu irukiya,Hey mummy kitchen la enna plants
-          ah vetti knnutu irukiya,Hey mummy kitchen la enna plants ah vetti
-          knnutu irukiya,Hey mummy kitchen la enna plants ah vetti knnutu
-          irukiya
-        </span>
+        <div className={classes.profileName}>{user.name}</div>
+        <span className={classes.descriptionText}>{title}</span>
       </div>
     </div>
   );

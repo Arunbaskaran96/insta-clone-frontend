@@ -3,7 +3,6 @@ import classes from "./Registrer.module.css";
 import { useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
-// import { getDownloadURL } from "firebase/storage";
 import axios from "axios";
 
 function Register() {
@@ -23,7 +22,7 @@ function Register() {
       image: image,
     };
     try {
-      await axios.post("http://localhost:8000/adduser", data);
+      await axios.post("http://localhost:8000/api/signup", data);
       alert("successfully submitted");
     } catch (error) {
       console.log(error);
@@ -82,7 +81,12 @@ function Register() {
         <br />
         <input type="file" className={classes.file} onChange={handleImage} />
         <br />
-        <input type="submit" value="Register" className={classes.regBtn} />
+        <input
+          type="submit"
+          value="Register"
+          disabled={image === null}
+          className={classes.regBtn}
+        />
         <br />
       </form>
       <div className={classes.bottom}>

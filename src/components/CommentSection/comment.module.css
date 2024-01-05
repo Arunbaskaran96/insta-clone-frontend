@@ -21,13 +21,17 @@
     font-weight: 600;
 }
 .middle {
-    margin-top: 80px;
-    max-height: 450px;
+    margin-top: 50px;
+    height: 490px;
     overflow-x: scroll;
 }
 
-.profileName{
-    font-size: 22px;
-    font-weight: 600;
-    margin-left: 25px;
+.postBtn{
+    background-color: green;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
 }

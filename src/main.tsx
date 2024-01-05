@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 
 import firebase from "firebase/compat/app";
+import { Provider } from "react-redux";
+import Store from "./Redux/Store.ts";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAlY2tlTdccK2-1bR8dThgqhYyMpJPFvZA",
@@ -17,7 +19,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={Store}>
     <App />
-  </React.StrictMode>
+  </Provider>
+  // </React.StrictMode>
 );
