@@ -38,7 +38,10 @@ function Comment(props: commentProps) {
         comment: commentRef.current?.value,
         user: userDetails._id,
       };
-      await axios.put(`http://localhost:8000/api/${id}/comment`, data);
+      await axios.put(
+        `https://instaclone-api-3y78.onrender.com/api/${id}/comment`,
+        data
+      );
       postDispatch(addComment(data));
     } catch (error) {
       console.log(error);

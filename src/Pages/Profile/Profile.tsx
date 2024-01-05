@@ -18,7 +18,7 @@ function Profile() {
   const getPosts = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/fetchuserpost/${userDetails._id}`,
+        `https://instaclone-api-3y78.onrender.com/api/fetchuserpost/${userDetails._id}`,
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
         }

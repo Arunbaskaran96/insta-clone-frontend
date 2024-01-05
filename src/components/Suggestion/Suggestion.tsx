@@ -28,7 +28,7 @@ function Suggestion() {
   const getFriends = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/getallusers",
+        "https://instaclone-api-3y78.onrender.com/api/getallusers",
         {
           headers: {
             Authorization: `${window.localStorage.getItem("token")}`,

@@ -18,7 +18,7 @@ function Login() {
       password: password.current?.value,
     };
     const { data } = await axios.post(
-      "http://localhost:8000/api/login",
+      "https://instaclone-api-3y78.onrender.com/api/login",
       userData
     );
     window.localStorage.setItem("token", data.token);

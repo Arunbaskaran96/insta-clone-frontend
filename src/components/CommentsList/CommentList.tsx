@@ -17,7 +17,7 @@ function CommentList(props: commentListProps) {
   const getUser = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/user/${comment.user}`,
+        `https://instaclone-api-3y78.onrender.com/api/user/${comment.user}`,
         {
           headers: {
             Authorization: `${window.localStorage.getItem("token")}`,

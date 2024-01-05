@@ -77,26 +77,6 @@ function Scroller() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   return (
-    // <XCarousel>
-    //   <div className={classes.container}>
-    //     <div className={classes.storyContainer}>
-    //       {obj.map((item) => {
-    //         return (
-    //           <div
-    //             style={{
-    //               display: "flex",
-    //               flexDirection: "column",
-    //               alignItems: "center",
-    //             }}
-    //           >
-    //             {item.avatar}
-    //             <span className={classes.profileName}>{item.name}</span>
-    //           </div>
-    //         );
-    //       })}
-    //     </div>
-    //   </div>
-    // </XCarousel>
     <ReactSimplyCarousel
       activeSlideIndex={activeSlideIndex}
       onRequestChange={setActiveSlideIndex}

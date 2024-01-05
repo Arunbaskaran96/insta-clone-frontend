@@ -29,7 +29,7 @@ function UserProfile() {
   const getUser = async () => {
     try {
       const currentUser = await axios.get(
-        `http://localhost:8000/api/user/${params.id}`,
+        `https://instaclone-api-3y78.onrender.com/api/user/${params.id}`,
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
         }
@@ -38,7 +38,7 @@ function UserProfile() {
       if (currentUser) {
         try {
           const { data } = await axios.get(
-            `http://localhost:8000/api/fetchuserpost/${currentUser.data._id}`,
+            `https://instaclone-api-3y78.onrender.com/api/fetchuserpost/${currentUser.data._id}`,
             {
               headers: {
                 Authorization: `${window.localStorage.getItem("token")}`,
@@ -58,7 +58,7 @@ function UserProfile() {
   const followHandler = async () => {
     if (!isFollowing) {
       await axios.put(
-        `http://localhost:8000/api/follow/${user._id}`,
+        `https://instaclone-api-3y78.onrender.com/api/follow/${user._id}`,
         { id: userDetails._id },
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
@@ -68,7 +68,7 @@ function UserProfile() {
       setIsFollowing(!isFollowing);
     } else {
       await axios.put(
-        `http://localhost:8000/api/unfollow/${user._id}`,
+        `https://instaclone-api-3y78.onrender.com/api/unfollow/${user._id}`,
         { id: userDetails._id },
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },

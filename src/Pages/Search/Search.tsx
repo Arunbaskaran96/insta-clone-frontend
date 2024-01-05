@@ -9,9 +9,7 @@ import "@mantine/core/styles.layer.css";
 import { Link } from "react-router-dom";
 function Search(props: any) {
   const { minimise } = props;
-  // const userDetails = useSelector((state: any) => {
-  //   return state.User.user;
-  // });
+
   const [opened, { open, close }] = useDisclosure(false);
   const [users, setUsers] = useState([]);
 
@@ -22,7 +20,7 @@ function Search(props: any) {
   const getFriends = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/getallusers",
+        "https://instaclone-api-3y78.onrender.com/api/getallusers",
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
         }

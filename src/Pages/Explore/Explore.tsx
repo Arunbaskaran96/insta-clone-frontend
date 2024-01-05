@@ -12,9 +12,12 @@ function Explore() {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8000/api/allposts", {
-        headers: { Authorization: `${window.localStorage.getItem("token")}` },
-      });
+      const { data } = await axios.get(
+        "https://instaclone-api-3y78.onrender.com/api/allposts",
+        {
+          headers: { Authorization: `${window.localStorage.getItem("token")}` },
+        }
+      );
       setFetchAllPosts(data);
     } catch (error) {
       console.log(error);

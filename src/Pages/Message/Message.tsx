@@ -28,7 +28,7 @@ function Message() {
   }, []);
 
   useEffect(() => {
-    socketRef.current = io("http://localhost:3000");
+    socketRef.current = io("https://insta-socket.onrender.com/");
   }, [arrMsg]);
 
   useEffect(() => {
@@ -48,9 +48,12 @@ function Message() {
 
   const getFriends = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8000/api/getfriends", {
-        headers: { Authorization: `${window.localStorage.getItem("token")}` },
-      });
+      const { data } = await axios.get(
+        "https://instaclone-api-3y78.onrender.com/api/getfriends",
+        {
+          headers: { Authorization: `${window.localStorage.getItem("token")}` },
+        }
+      );
       setFriends(data);
     } catch (error) {
       console.log(error);
@@ -60,7 +63,7 @@ function Message() {
     try {
       setCurrentChat(item);
       const { data } = await axios.get(
-        `http://localhost:8000/api/getmsg/${item._id}`,
+        `https://instaclone-api-3y78.onrender.com/api/getmsg/${item._id}`,
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
         }
@@ -83,9 +86,13 @@ function Message() {
       socketRef.current?.emit("sendMsg", data);
       msgDispatch(addNewMsg(data));
       setArrMsg((prev: any) => [...prev, data]);
-      await axios.post("http://localhost:8000/api/newmsg", data, {
-        headers: { Authorization: `${window.localStorage.getItem("token")}` },
-      });
+      await axios.post(
+        "https://instaclone-api-3y78.onrender.com/api/newmsg",
+        data,
+        {
+          headers: { Authorization: `${window.localStorage.getItem("token")}` },
+        }
+      );
     } catch (error) {
       console.log(error);
     }

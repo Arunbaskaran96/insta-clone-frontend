@@ -30,7 +30,7 @@ function IndividualPost(props: IndividualPostProps) {
       setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
       setIsLiked(!isLiked);
       await axios.put(
-        `http://localhost:8000/api/${id}/like`,
+        `https://instaclone-api-3y78.onrender.com/api/${id}/like`,
         { id: userDetails._id },
         {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },

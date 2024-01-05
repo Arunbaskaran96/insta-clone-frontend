@@ -22,7 +22,10 @@ function Register() {
       image: image,
     };
     try {
-      await axios.post("http://localhost:8000/api/signup", data);
+      await axios.post(
+        "https://instaclone-api-3y78.onrender.com/api/signup",
+        data
+      );
       alert("successfully submitted");
     } catch (error) {
       console.log(error);
