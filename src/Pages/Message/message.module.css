@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+}
+
+.friends{
+    width: 650px;
+}
+.friendsList{
+    margin-top: 20px;
+}
+
+.friend{
+    align-items: center;
+    display: flex;
+    transition: 0.4s;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(231, 227, 227);
+    }
+}
+.input{
+    height: 40px;
+    width: 80%;
+    border-radius: 8px;
+}
+.btn{
+    background-color: aqua;
+    padding: 6px 25px;
+    border: none;
+    color: white;
+    margin-left: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profileContainer{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.nomessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 25px;
+}
+.noConversation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 30px;
+}
+
+.middle{
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.message{
+    width: 100%;
+}
+
+.name{
+    font-size: 23px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 30px;
+}

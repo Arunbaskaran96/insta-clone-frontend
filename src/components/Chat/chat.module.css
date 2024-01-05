@@ -1,0 +1,22 @@
+
+.ownmsgContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    justify-content: flex-end;
+}
+.msgContainer {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    justify-content: flex-start;
+}
+.msgText{
+    font-size: 18px;
+    border: 1px solid black;
+    padding: 0.5px 25px;
+    border-radius: 10px;
+    background-color: rgb(241, 239, 239);
+    margin-left: 10px;
+}
+

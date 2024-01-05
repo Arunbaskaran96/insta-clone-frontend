@@ -1,0 +1,34 @@
+.itemImg {
+    height: 20px;
+    aspect-ratio: 1/1;
+}
+
+.contentText{
+    font-size: 20px;
+    padding: 0px 20px ;
+}
+
+.text{
+    font-size: 15spx;
+    font-weight:600 ;
+}
+
+.contentTextNone{
+    display: none;
+}
+
+.bottomContainer{
+    transition: 0.4s;
+    &:hover {
+        background-color: rgb(240, 233, 233);
+    }
+}
+
+.input{
+    margin-top: 25px;
+    height: 47px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: gainsboro;
+}

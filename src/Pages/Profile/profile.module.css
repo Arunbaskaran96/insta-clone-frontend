@@ -1,0 +1,71 @@
+.top{
+    background-color: rgb(253, 249, 249);
+    padding-top: 50px;
+    flex: 9;
+    display: flex;
+    width: 100%;
+}
+.container{
+    display: flex;
+}
+
+.topLeft{
+    flex: 4;
+    display: flex;
+    justify-content: center;
+}
+
+.postCount,.followersCount ,.followingsCount{
+    font-size: 20px;
+    margin-right: 15px;
+    cursor:pointer;
+}
+.name {
+    font-size: 15px;
+}
+
+.topRight {
+    flex: 8;
+    width: 100%;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postContainer{
+    border-top: 1px solid black;
+    padding-top: 15px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    background-color: rgb(253, 249, 249);
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 50px;
+}
+
+.editBtn {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+        background-color: rgb(46, 44, 44);
+    }
+}
+
+.img{
+    height: 250px;
+    width: 250px;
+    border-radius: 10px;
+    margin: 10px;
+}
