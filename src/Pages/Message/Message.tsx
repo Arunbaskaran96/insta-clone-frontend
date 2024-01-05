@@ -12,6 +12,8 @@ function Message() {
   const text = useRef<null | HTMLInputElement>(null);
   const msgDispatch = useDispatch();
   const [currentChat, setCurrentChat] = useState<any>(null);
+  const [arrMsg, setArrMsg] = useState<any>([]);
+  const scrollref = useRef<any>(null);
   const socketRef = useRef<any>(null);
 
   const messages = useSelector((state: any) => {
@@ -22,19 +24,27 @@ function Message() {
   });
 
   useEffect(() => {
+    scrollref.current?.scrollIntoView({ behaviour: "smooth" });
+  }, []);
+
+  useEffect(() => {
     socketRef.current = io("http://localhost:3000");
+  }, [arrMsg]);
+
+  useEffect(() => {
     socketRef.current.emit("addUser", user._id);
   }, []);
 
   useEffect(() => {
     socketRef.current?.on("getMsg", (item: any) => {
-      msgDispatch(addMsg(item));
+      setArrMsg((prev: any) => [...prev, item]);
+      msgDispatch(addNewMsg(item));
     });
   }, []);
 
   useEffect(() => {
     getFriends();
-  }, []);
+  }, [arrMsg]);
 
   const getFriends = async () => {
     try {
@@ -55,17 +65,12 @@ function Message() {
           headers: { Authorization: `${window.localStorage.getItem("token")}` },
         }
       );
+      setArrMsg(data);
       msgDispatch(addMsg(data));
     } catch (error) {
       console.log(error);
     }
   };
-
-  // useEffect(() => {
-  //   socketRef.current?.on("test", (msg: any) => {
-  //     console.log(msg);
-  //   });
-  // }, []);
 
   const formHandler = async (e: any) => {
     e.preventDefault();
@@ -77,6 +82,7 @@ function Message() {
       };
       socketRef.current?.emit("sendMsg", data);
       msgDispatch(addNewMsg(data));
+      setArrMsg((prev: any) => [...prev, data]);
       await axios.post("http://localhost:8000/api/newmsg", data, {
         headers: { Authorization: `${window.localStorage.getItem("token")}` },
       });
@@ -117,7 +123,12 @@ function Message() {
             <div className={classes.middle}>
               {messages.length ? (
                 messages.map((item: any) => {
-                  return <Chat item={item} own={item.senderId === user._id} />;
+                  return (
+                    <div ref={scrollref}>
+                      {" "}
+                      <Chat item={item} own={item.senderId === user._id} />
+                    </div>
+                  );
                 })
               ) : (
                 <div className={classes.nomessage}>no conversation started</div>

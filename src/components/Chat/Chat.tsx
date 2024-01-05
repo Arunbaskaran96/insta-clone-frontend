@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import XAvatar from "../Avatar/Avatar";
 import classes from "./chat.module.css";
 import axios from "axios";
 function Chat(props: any) {
   const { own, item } = props;
   const [user, setUser] = useState<any>({});
+  const scrollRef = useRef<any>();
 
   useEffect(() => {
     getUser();
